@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 void main() =>
     runApp(MaterialApp(
         home: Scaffold(
-          body: Text('test'),
+          body: Card(
+            child: Text('Teste'),
+          ),
           appBar: AppBar(
             title: Text('Transferências'),
           ),
