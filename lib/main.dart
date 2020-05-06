@@ -5,7 +5,15 @@ void main() =>
     runApp(MaterialApp(
         home: Scaffold(
           body: Card(
-            child: Text('Teste'),
+            child: Column(
+              children: <Widget>[
+                Text('Teste'),
+                Text('Teste'),
+                Text('Teste'),
+                Text('Teste'),
+                Text('Teste'),
+              ],
+            ),
           ),
           appBar: AppBar(
             title: Text('Transferências'),
