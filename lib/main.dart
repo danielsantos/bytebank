@@ -11,11 +11,5 @@ void main() => runApp(Column(
           'Craft beautiful UIs',
           textDirection: TextDirection.ltr,
         ),
-        Expanded(
-          child: FittedBox(
-            fit: BoxFit.contain, // otherwise the logo will be tiny
-            child: const FlutterLogo(),
-          ),
-        ),
       ],
     ));
