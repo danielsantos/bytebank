@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
@@ -17,25 +16,27 @@ class ListaTransferencias extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Card(
-            child: ListTile(
-          leading: Icon(Icons.monetization_on),
-          title: Text('100.0'),
-          subtitle: Text('1000'),
-        )),
-        Card(
-            child: ListTile(
-          leading: Icon(Icons.monetization_on),
-          title: Text('200.0'),
-          subtitle: Text('1000'),
-        )),
-        Card(
-            child: ListTile(
-          leading: Icon(Icons.monetization_on),
-          title: Text('300.0'),
-          subtitle: Text('1000'),
-        )),
+        ItemTransferencia('100.0', '1234'),
+        ItemTransferencia('200.0', '9876'),
+        ItemTransferencia('450.0', '4308'),
       ],
     );
+  }
+}
+
+class ItemTransferencia extends StatelessWidget {
+  final String valor;
+  final String numeroConta;
+
+  ItemTransferencia(this.valor, this.numeroConta);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        child: ListTile(
+      leading: Icon(Icons.monetization_on),
+      title: Text(valor),
+      subtitle: Text(numeroConta),
+    ));
   }
 }
