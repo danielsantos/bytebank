@@ -1,30 +1,41 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() =>
-    runApp(MaterialApp(
+void main() => runApp(MaterialApp(
         home: Scaffold(
-          body: Column(
-            children: <Widget>[
-              Card(
-                child: ListTile(
-                  leading: Icon(Icons.monetization_on),
-                  title: Text('100.0'),
-                  subtitle: Text('1000'),
-                )
-              ),Card(
-                child: ListTile(
-                  leading: Icon(Icons.monetization_on),
-                  title: Text('200.0'),
-                  subtitle: Text('1000'),
-                )
-              ),
-            ],
-          ),
-          appBar: AppBar(
-            title: Text('Transferências'),
-          ),
-          floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add),
-          ),
-        )));
+      body: ListaTransferencias(),
+      appBar: AppBar(
+        title: Text('Transferências'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+      ),
+    )));
+
+class ListaTransferencias extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Card(
+            child: ListTile(
+          leading: Icon(Icons.monetization_on),
+          title: Text('100.0'),
+          subtitle: Text('1000'),
+        )),
+        Card(
+            child: ListTile(
+          leading: Icon(Icons.monetization_on),
+          title: Text('200.0'),
+          subtitle: Text('1000'),
+        )),
+        Card(
+            child: ListTile(
+          leading: Icon(Icons.monetization_on),
+          title: Text('300.0'),
+          subtitle: Text('1000'),
+        )),
+      ],
+    );
+  }
+}
