@@ -7,6 +7,8 @@ void main() =>
           body: Card(
             child: ListTile(
               leading: Icon(Icons.monetization_on),
+              title: Text('100.0'),
+              subtitle: Text('1000'),
             )
           ),
           appBar: AppBar(
