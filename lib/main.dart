@@ -12,9 +12,19 @@ class BytebankApp extends StatelessWidget {
   }
 }
 
-class FormularioTransferencia extends StatelessWidget {
+class FormularioTransferencia extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() {
+    return FormularioTransferenciaState();
+  }
+
+}
+
+class FormularioTransferenciaState extends State<FormularioTransferencia> {
+
   final TextEditingController _controladorCampoNumeroConta =
-      TextEditingController();
+  TextEditingController();
   final TextEditingController _controladorCampoValor = TextEditingController();
 
   @override
@@ -23,26 +33,28 @@ class FormularioTransferencia extends StatelessWidget {
         appBar: AppBar(
           title: Text('Criando Transferência'),
         ),
-        body: Column(
-          children: <Widget>[
-            Editor(
-              controlador: _controladorCampoNumeroConta,
-              rotulo: 'Número da Conta',
-              dica: '0000',
-            ),
-            Editor(
-              controlador: _controladorCampoValor,
-              rotulo: 'Valor',
-              dica: '0.00',
-              icone: Icons.monetization_on,
-            ),
-            RaisedButton(
-              child: Text('Confimar'),
-              onPressed: () {
-                _criaTransferencia(context);
-              },
-            ),
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Editor(
+                controlador: _controladorCampoNumeroConta,
+                rotulo: 'Número da Conta',
+                dica: '0000',
+              ),
+              Editor(
+                controlador: _controladorCampoValor,
+                rotulo: 'Valor',
+                dica: '0.00',
+                icone: Icons.monetization_on,
+              ),
+              RaisedButton(
+                child: Text('Confimar'),
+                onPressed: () {
+                  _criaTransferencia(context);
+                },
+              ),
+            ],
+          ),
         ));
   }
 
@@ -62,6 +74,7 @@ class FormularioTransferencia extends StatelessWidget {
       Navigator.pop(context, transferenciaCriada);
     }
   }
+
 }
 
 class Editor extends StatelessWidget {
@@ -126,7 +139,11 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
           future.then((transferenciaRecebida) {
             debugPrint('chegou no future');
             debugPrint('$transferenciaRecebida');
-            widget._transferencias.add(transferenciaRecebida);
+            if (transferenciaRecebida != null) {
+              setState(() { // ao trabalhar com Stateful deve ser usado o setState para casos onde a ação pode ter um delay e o builder não for acionado
+                widget._transferencias.add(transferenciaRecebida);
+              });
+            }
           });
         },
       ),
